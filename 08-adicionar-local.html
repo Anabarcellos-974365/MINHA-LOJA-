@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Loja - Adicionar Local</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--blue:#1A56FF;--blue-dark:#1240CC;--gray-light:#F5F7FA;--gray-mid:#E2E8F0;--gray-text:#6B7280;--black:#0F172A;--white:#FFFFFF;--green:#22C55E}
+  body{font-family:'Sora',sans-serif;background:var(--gray-light);min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .phone-frame{width:390px;min-height:844px;background:var(--white);border-radius:40px;box-shadow:0 32px 80px rgba(0,0,0,.15);overflow:hidden;display:flex;flex-direction:column}
+  .header{background:var(--blue);padding:14px 20px;color:white}
+  .steps-nav{display:flex;justify-content:center;gap:8px;margin-bottom:10px}
+  .step-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .step-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+  .step-circle.done{background:var(--green);color:white}
+  .step-circle.active{background:white;color:var(--blue)}
+  .step-circle.inactive{background:rgba(255,255,255,.3);color:rgba(255,255,255,.7);font-size:11px}
+  .step-label{font-size:10px;color:rgba(255,255,255,.8);text-align:center;max-width:60px}
+  .step-connector{width:30px;height:2px;background:rgba(255,255,255,.3);margin-top:14px}
+  .content{flex:1;padding:24px;overflow-y:auto}
+  h1{font-size:18px;font-weight:700;color:var(--black);margin-bottom:6px}
+  .subtitle{font-size:12px;color:var(--gray-text);margin-bottom:20px;line-height:1.5}
+  .form-group{margin-bottom:16px}
+  label{display:block;font-size:11px;font-weight:700;color:var(--gray-text);margin-bottom:5px;letter-spacing:.04em;text-transform:uppercase}
+  input{width:100%;padding:12px 14px;border:1.5px solid var(--gray-mid);border-radius:10px;font-family:'Sora',sans-serif;font-size:13px;color:var(--black);outline:none;transition:border-color .2s}
+  input:focus{border-color:var(--blue)}
+  .addr-wrap{position:relative}
+  .addr-wrap input{padding-right:40px}
+  .addr-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:18px;pointer-events:none}
+  .phone-input{display:flex;gap:8px}
+  .phone-prefix{display:flex;align-items:center;gap:5px;padding:12px 12px;border:1.5px solid var(--gray-mid);border-radius:10px;font-size:13px;color:var(--black);background:var(--gray-light);white-space:nowrap}
+  .phone-input input{flex:1}
+  .actions{display:flex;gap:10px;margin-top:20px}
+  .btn-secondary{flex:1;padding:13px;background:white;color:var(--gray-text);border:1.5px solid var(--gray-mid);border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block}
+  .btn-primary{flex:1;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block}
+  .hidden{display:none}
+
+  /* Step 2 - Review */
+  .review-field{margin-bottom:12px}
+  .review-label{font-size:10px;font-weight:700;color:var(--gray-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .review-value{font-size:14px;color:var(--black);padding:10px 14px;border:1.5px solid var(--gray-mid);border-radius:8px;background:var(--gray-light)}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+</style>
+</head>
+<body>
+<div class="phone-frame">
+  <div class="header">
+    <div class="steps-nav">
+      <div class="step-item">
+        <div class="step-circle active" id="c1">1</div>
+        <div class="step-label">Informações do Local</div>
+      </div>
+      <div class="step-connector" id="conn1"></div>
+      <div class="step-item">
+        <div class="step-circle inactive" id="c2">2</div>
+        <div class="step-label">Revisar Local</div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item">
+        <div class="step-circle inactive" id="c3">✓</div>
+        <div class="step-label">Seu Local</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="content" id="step1">
+    <h1>Informações do local</h1>
+    <p class="subtitle">Sincronize suas informações em uma variedade de plataformas de Busca online.</p>
+    <div class="form-group">
+      <label>Nome do local</label>
+      <input type="text" id="nomeLocal" placeholder="Padaria São José" value="Padaria São José">
+    </div>
+    <div class="form-group">
+      <label>Endereço</label>
+      <div class="addr-wrap">
+        <input type="text" id="endereco" placeholder="Av. Washington Soares" value="Av. Washington Soares">
+        <span class="addr-icon">🔍</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Número de telefone</label>
+      <div class="phone-input">
+        <div class="phone-prefix">🇧🇷 55</div>
+        <input type="tel" id="telefone" placeholder="(85) 99998-0084" value="(85) 99884-0884">
+      </div>
+    </div>
+    <div class="actions">
+      <a href="../dashboard/code.html" class="btn-secondary">Cancelar</a>
+      <button class="btn-primary" onclick="goStep2()">Próximo</button>
+    </div>
+  </div>
+
+  <!-- Step 2 - Review -->
+  <div class="content hidden" id="step2">
+    <h1>Revisar Local</h1>
+    <p class="subtitle">Confirme se os dados estão corretos.</p>
+    <div class="review-field">
+      <div class="review-label">Nome do Local</div>
+      <div class="review-value" id="rv-nome">Padaria São José</div>
+    </div>
+    <div class="review-field">
+      <div class="review-label">Endereço</div>
+      <div class="review-value" id="rv-end">Av. Washington Soares</div>
+    </div>
+    <div class="two-col">
+      <div class="review-field">
+        <div class="review-label">Número</div>
+        <div class="review-value">85</div>
+      </div>
+      <div class="review-field">
+        <div class="review-label">CEP</div>
+        <div class="review-value">60811-900</div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="review-field">
+        <div class="review-label">Cidade</div>
+        <div class="review-value">Fortaleza</div>
+      </div>
+      <div class="review-field">
+        <div class="review-label">Estado</div>
+        <div class="review-value">CE</div>
+      </div>
+    </div>
+    <div class="review-field">
+      <div class="review-label">País</div>
+      <div class="review-value">Brasil</div>
+    </div>
+    <div class="review-field">
+      <div class="review-label">Telefone</div>
+      <div class="review-value" id="rv-tel">🇧🇷 (85) 99884-0884</div>
+    </div>
+    <div class="actions">
+      <button class="btn-secondary" onclick="goStep1()">Voltar</button>
+      <a href="../horarios/code.html" class="btn-primary">Concluir</a>
+    </div>
+  </div>
+</div>
+<script>
+  function goStep2(){
+    document.getElementById('rv-nome').textContent=document.getElementById('nomeLocal').value||'Padaria São José';
+    document.getElementById('rv-end').textContent=document.getElementById('endereco').value||'Av. Washington Soares';
+    document.getElementById('rv-tel').textContent='🇧🇷 '+document.getElementById('telefone').value;
+    document.getElementById('c1').className='step-circle done';document.getElementById('c1').textContent='✓';
+    document.getElementById('c2').className='step-circle active';document.getElementById('conn1').style.background='rgba(255,255,255,.8)';
+    document.getElementById('step1').classList.add('hidden');document.getElementById('step2').classList.remove('hidden');
+  }
+  function goStep1(){
+    document.getElementById('c1').className='step-circle active';document.getElementById('c1').textContent='1';
+    document.getElementById('c2').className='step-circle inactive';document.getElementById('conn1').style.background='';
+    document.getElementById('step2').classList.add('hidden');document.getElementById('step1').classList.remove('hidden');
+  }
+</script>
+</body>
+</html>

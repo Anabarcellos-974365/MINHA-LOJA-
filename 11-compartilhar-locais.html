@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Loja - Compartilhar Locais</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--blue:#1A56FF;--blue-dark:#1240CC;--gray-light:#F5F7FA;--gray-mid:#E2E8F0;--gray-text:#6B7280;--black:#0F172A;--white:#FFFFFF}
+  body{font-family:'Sora',sans-serif;background:var(--gray-light);min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .phone-frame{width:390px;min-height:844px;background:var(--white);border-radius:40px;box-shadow:0 32px 80px rgba(0,0,0,.15);overflow:hidden;display:flex;flex-direction:column}
+  .header{background:var(--blue);padding:16px 20px;color:white;display:flex;align-items:center;gap:12px}
+  .back-btn{color:white;text-decoration:none;font-size:18px}
+  .header-title{font-size:14px;font-weight:700;flex:1}
+  .content{flex:1;padding:20px;overflow-y:auto}
+  h2{font-size:18px;font-weight:700;color:var(--black);margin-bottom:8px}
+  .subtitle{font-size:13px;color:var(--gray-text);margin-bottom:20px;line-height:1.5}
+  .filter-row{display:flex;gap:8px;margin-bottom:16px}
+  .filter-select{flex:1;padding:9px 12px;border:1.5px solid var(--gray-mid);border-radius:8px;font-family:'Sora',sans-serif;font-size:13px;color:var(--black);outline:none;background:white}
+  .location-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--gray-mid)}
+  .location-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--blue);margin-top:3px;flex-shrink:0}
+  .loc-info{flex:1}
+  .loc-name{font-size:13px;font-weight:700;color:var(--black);margin-bottom:3px}
+  .loc-address{font-size:11px;color:var(--gray-text);line-height:1.4}
+  .loc-phone{font-size:11px;color:var(--gray-text);margin-top:2px}
+  .email-section{margin-top:20px}
+  .email-label{font-size:12px;font-weight:700;color:var(--black);margin-bottom:6px}
+  input[type=email]{width:100%;padding:12px 14px;border:1.5px solid var(--gray-mid);border-radius:8px;font-family:'Sora',sans-serif;font-size:13px;color:var(--black);outline:none}
+  input[type=email]:focus{border-color:var(--blue)}
+  .roles-section{margin-top:16px}
+  .roles-title{font-size:12px;font-weight:700;color:var(--black);margin-bottom:8px}
+  .role-options{display:flex;gap:6px}
+  .role-btn{flex:1;padding:10px;border:1.5px solid var(--gray-mid);border-radius:8px;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;color:var(--gray-text);cursor:pointer;background:white;text-align:center;transition:all .15s}
+  .role-btn.active{border-color:var(--blue);background:#EFF6FF;color:var(--blue)}
+  .actions{display:flex;gap:10px;margin-top:24px}
+  .btn-secondary{flex:1;padding:13px;background:white;color:var(--gray-text);border:1.5px solid var(--gray-mid);border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block}
+  .btn-primary{flex:1;padding:13px;background:var(--blue);color:white;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block}
+</style>
+</head>
+<body>
+<div class="phone-frame">
+  <div class="header">
+    <a href="../convites/code.html" class="back-btn">←</a>
+    <span class="header-title">Compartilhar Locais</span>
+  </div>
+  <div class="content">
+    <h2>Compartilhe seus Locais</h2>
+    <p class="subtitle">Selecione os locais que deseja compartilhar com seu(a) colaborador(a).</p>
+
+    <div class="filter-row">
+      <select class="filter-select">
+        <option>Todas as locais</option>
+        <option>Ativos</option>
+        <option>Pendentes</option>
+      </select>
+      <select class="filter-select">
+        <option>Todos (5)</option>
+        <option>Minha Loja</option>
+      </select>
+    </div>
+
+    <div class="location-item">
+      <input type="checkbox" checked>
+      <div class="loc-info">
+        <div class="loc-name">Minha Loja Fortaleza Iguatemi</div>
+        <div class="loc-address">Av. Washington Soares, 85 - Edson Queiroz, Fortaleza - CE, 60811-905</div>
+        <div class="loc-phone">(85) 98964-0175</div>
+      </div>
+    </div>
+    <div class="location-item">
+      <input type="checkbox">
+      <div class="loc-info">
+        <div class="loc-name">Minha Loja Fortaleza Iguatemi</div>
+        <div class="loc-address">Av. Washington Soares, 85 - Edson Queiroz, Fortaleza - CE, 60811-905</div>
+        <div class="loc-phone">(85) 98964-0175</div>
+      </div>
+    </div>
+    <div class="location-item">
+      <input type="checkbox">
+      <div class="loc-info">
+        <div class="loc-name">Minha Loja Fortaleza Iguatemi</div>
+        <div class="loc-address">Av. Washington Soares, 85 - Edson Queiroz, Fortaleza - CE, 60811-905</div>
+        <div class="loc-phone">(85) 98964-0175</div>
+      </div>
+    </div>
+    <div class="location-item">
+      <input type="checkbox">
+      <div class="loc-info">
+        <div class="loc-name">Minha Loja Fortaleza Iguatemi</div>
+        <div class="loc-address">Av. Washington Soares, 85 - Edson Queiroz, Fortaleza - CE, 60811-905</div>
+        <div class="loc-phone">(85) 98964-0175</div>
+      </div>
+    </div>
+
+    <div class="email-section">
+      <div class="email-label">📧 E-mail do convidado</div>
+      <input type="email" placeholder="user@gmail.com" value="user@gmail.com">
+    </div>
+    <p style="font-size:11px;color:var(--gray-text);margin-top:6px">O usuário irá informações e criará seu novo perfil de usuário, caso não exista.</p>
+
+    <div class="roles-section">
+      <div class="roles-title">Nível de acesso</div>
+      <div class="role-options">
+        <div class="role-btn active">Visualizador</div>
+        <div class="role-btn">Editor</div>
+        <div class="role-btn">Admin</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a href="../convites/code.html" class="btn-secondary">Voltar</a>
+      <a href="../convites/code.html" class="btn-primary">Próximo</a>
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.role-btn').forEach(btn=>{
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+    })
+  })
+</script>
+</body>
+</html>

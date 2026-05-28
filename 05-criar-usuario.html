@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Loja - Criar Usuário</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--blue:#1A56FF;--blue-dark:#1240CC;--gray-light:#F5F7FA;--gray-mid:#E2E8F0;--gray-text:#6B7280;--black:#0F172A;--white:#FFFFFF}
+  body{font-family:'Sora',sans-serif;background:var(--gray-light);min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .phone-frame{width:390px;min-height:844px;background:var(--white);border-radius:40px;box-shadow:0 32px 80px rgba(0,0,0,.15);overflow:hidden;display:flex;flex-direction:column}
+  .top-bar{background:var(--blue);height:6px}
+  .content{padding:32px 28px;flex:1;display:flex;flex-direction:column}
+  .step-indicator{display:flex;gap:6px;margin-bottom:36px}
+  .step{height:4px;flex:1;border-radius:2px;background:var(--gray-mid)}
+  .step.active{background:var(--blue)}
+  h1{font-size:22px;font-weight:700;color:var(--black);margin-bottom:10px}
+  .subtitle{font-size:14px;color:var(--gray-text);margin-bottom:28px;line-height:1.6}
+  .option-card{
+    border:1.5px solid var(--gray-mid);border-radius:12px;padding:16px;
+    display:flex;align-items:flex-start;gap:12px;cursor:pointer;
+    transition:border-color .2s;margin-bottom:10px;
+  }
+  .option-card:hover{border-color:var(--blue)}
+  .option-card.selected{border-color:var(--blue);background:#F0F5FF}
+  .radio{
+    width:20px;height:20px;border-radius:50%;border:2px solid var(--gray-mid);
+    flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s;
+  }
+  .option-card.selected .radio{border-color:var(--blue);background:var(--blue)}
+  .option-card.selected .radio::after{content:'';width:8px;height:8px;border-radius:50%;background:white}
+  .opt-text .title{font-size:14px;font-weight:600;color:var(--black);margin-bottom:3px}
+  .opt-text .desc{font-size:12px;color:var(--gray-text)}
+  .btn-primary{width:100%;padding:15px;background:var(--blue);color:white;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block;transition:background .2s;margin-top:auto}
+  .btn-primary:hover{background:var(--blue-dark)}
+
+  /* Step 2 */
+  .form-group{margin-bottom:16px}
+  label{display:block;font-size:12px;font-weight:600;color:var(--gray-text);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+  input,select{width:100%;padding:13px 16px;border:1.5px solid var(--gray-mid);border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;color:var(--black);outline:none;transition:border-color .2s;background:white}
+  input:focus,select:focus{border-color:var(--blue)}
+  .phone-input{display:flex;gap:8px}
+  .phone-prefix{display:flex;align-items:center;gap:6px;padding:13px 14px;border:1.5px solid var(--gray-mid);border-radius:10px;font-size:14px;color:var(--black);white-space:nowrap;background:var(--gray-light)}
+  .phone-input input{flex:1}
+  .hidden{display:none}
+  .back-link{display:flex;align-items:center;gap:6px;color:var(--blue);font-size:13px;text-decoration:none;margin-bottom:28px;font-weight:500;cursor:pointer;border:none;background:none;font-family:'Sora',sans-serif}
+</style>
+</head>
+<body>
+<div class="phone-frame">
+  <div class="top-bar"></div>
+  <div class="content" id="step1">
+    <div class="step-indicator">
+      <div class="step active"></div>
+      <div class="step"></div>
+    </div>
+    <h1>Vamos começar!</h1>
+    <p class="subtitle">Para quem você está otimizando seu Perfil da empresa no Google?</p>
+    <div class="option-card selected" onclick="selectOption(this)">
+      <div class="radio"></div>
+      <div class="opt-text">
+        <div class="title">Para mim mesmo, meu negócio ou um amigo.</div>
+        <div class="desc">Gerencie sua presença digital com facilidade</div>
+      </div>
+    </div>
+    <div class="option-card" onclick="selectOption(this)">
+      <div class="radio"></div>
+      <div class="opt-text">
+        <div class="title">Para um cliente, como freelancer ou agência.</div>
+        <div class="desc">Gerencie múltiplos clientes em um só lugar</div>
+      </div>
+    </div>
+    <a href="#" onclick="goStep2()" class="btn-primary" style="margin-top:32px">Avançar</a>
+  </div>
+
+  <div class="content hidden" id="step2">
+    <div class="step-indicator">
+      <div class="step active"></div>
+      <div class="step active"></div>
+    </div>
+    <button class="back-link" onclick="goStep1()">← Voltar</button>
+    <h1>Queremos saber mais sobre você.</h1>
+    <p class="subtitle">Nos ajude a melhorar sua experiência!</p>
+    <div class="form-group">
+      <label>Nome completo</label>
+      <input type="text" placeholder="User" value="User">
+    </div>
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" placeholder="marcelo@gmail.com.br" value="marcelo@gmail.com.br">
+    </div>
+    <div class="form-group">
+      <label>WhatsApp</label>
+      <div class="phone-input">
+        <div class="phone-prefix">🇧🇷 55</div>
+        <input type="tel" placeholder="(85) 99999-9999" value="88998640884">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Quantidade de pontos de venda</label>
+      <select>
+        <option>1</option>
+        <option>1-05</option>
+        <option>11-50</option>
+        <option>90+</option>
+      </select>
+    </div>
+    <a href="../adicionar-local/code.html" class="btn-primary" style="margin-top:16px">Avançar</a>
+  </div>
+</div>
+<script>
+  function selectOption(el) {
+    document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  function goStep2() {
+    document.getElementById('step1').classList.add('hidden');
+    document.getElementById('step2').classList.remove('hidden');
+  }
+  function goStep1() {
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('step1').classList.remove('hidden');
+  }
+</script>
+</body>
+</html>

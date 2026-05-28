@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Loja - Redefinir Senha</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--blue:#1A56FF;--blue-dark:#1240CC;--gray-light:#F5F7FA;--gray-mid:#E2E8F0;--gray-text:#6B7280;--black:#0F172A;--white:#FFFFFF}
+  body{font-family:'Sora',sans-serif;background:var(--gray-light);min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .phone-frame{width:390px;min-height:844px;background:var(--white);border-radius:40px;box-shadow:0 32px 80px rgba(0,0,0,.15);overflow:hidden;display:flex;flex-direction:column}
+  .top-bar{background:var(--blue);height:6px}
+  .content{padding:32px 28px;flex:1;display:flex;flex-direction:column}
+  .back-link{display:flex;align-items:center;gap:6px;color:var(--blue);font-size:13px;text-decoration:none;margin-bottom:28px;font-weight:500}
+  h1{font-size:24px;font-weight:700;color:var(--black);margin-bottom:8px}
+  .subtitle{font-size:14px;color:var(--gray-text);margin-bottom:32px;line-height:1.6}
+  .form-group{margin-bottom:16px}
+  label{display:block;font-size:12px;font-weight:600;color:var(--gray-text);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+  .pass-wrap{position:relative}
+  input{width:100%;padding:14px 16px;border:1.5px solid var(--gray-mid);border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;color:var(--black);outline:none;transition:border-color .2s}
+  input:focus{border-color:var(--blue)}
+  .pass-wrap input{padding-right:44px}
+  .toggle-pass{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--gray-text);font-size:16px;padding:0}
+  .actions{display:flex;gap:12px;margin-top:auto;padding-top:32px}
+  .btn-secondary{flex:1;padding:14px;background:var(--white);color:var(--gray-text);border:1.5px solid var(--gray-mid);border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block;transition:border-color .2s}
+  .btn-secondary:hover{border-color:var(--blue)}
+  .btn-primary{flex:1;padding:14px;background:var(--blue);color:white;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block;transition:background .2s}
+  .btn-primary:hover{background:var(--blue-dark)}
+  .btn-primary.disabled{background:var(--gray-mid);color:var(--gray-text);pointer-events:none}
+</style>
+</head>
+<body>
+<div class="phone-frame">
+  <div class="top-bar"></div>
+  <div class="content">
+    <a href="../login/code.html" class="back-link">← Voltar</a>
+    <h1>Redefinir agora</h1>
+    <p class="subtitle">Insira sua nova senha de acesso à nossa plataforma Minha Loja.</p>
+    <div class="form-group">
+      <label>Nova Senha</label>
+      <div class="pass-wrap">
+        <input type="password" placeholder="Nova senha" id="senha1">
+        <button class="toggle-pass" onclick="togglePass('senha1')">👁</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Confirmar Senha</label>
+      <div class="pass-wrap">
+        <input type="password" placeholder="Confirmar senha" id="senha2">
+        <button class="toggle-pass" onclick="togglePass('senha2')">👁</button>
+      </div>
+    </div>
+    <div class="actions">
+      <a href="../login/code.html" class="btn-secondary">Cancelar</a>
+      <a href="../login/code.html" class="btn-primary">Concluir</a>
+    </div>
+  </div>
+</div>
+<script>
+  function togglePass(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+</script>
+</body>
+</html>
